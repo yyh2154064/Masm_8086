@@ -1,0 +1,21 @@
+STKSEG SEGMENT STACK
+    DW 32 DUP(0)
+STKSEG ENDS
+
+DATASEG SEGMENT
+    EXTRN MSG:FAR  ; 引用 MSG 数据
+DATASEG ENDS
+
+CODESEG SEGMENT
+    ASSUME CS:CODESEG, DS:DATASEG
+    PUBLIC PrintMessage
+
+PrintMessage PROC FAR
+    MOV AH, 9
+    LEA DX, [MSG]  ; 使用 LEA 指令加载字符串的偏移地址
+    INT 21H
+    RET
+PrintMessage ENDP
+
+CODESEG ENDS
+    END

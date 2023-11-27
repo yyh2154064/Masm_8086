@@ -1,0 +1,17 @@
+DATASEG SEGMENT
+    MSG DB "Hello World$"
+DATASEG ENDS
+
+CODESEG SEGMENT
+    ASSUME CS:CODESEG, DS:DATASEG
+    EXTRN PrintMessage:FAR
+    MAIN PROC FAR
+        MOV AX, DATASEG
+        MOV DS, AX
+        CALL PrintMessage
+        MOV AX, 4C00H
+        INT 21H
+    MAIN ENDP
+CODESEG ENDS
+
+END MAIN

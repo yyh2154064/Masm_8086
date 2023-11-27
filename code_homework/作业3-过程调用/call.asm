@@ -13,7 +13,7 @@ code segment
 start:
     mov ax, data    ;装载
     mov ds, ax
-    lea dx, offset information  ;输出提示信息
+    lea dx, information  ;输出提示信息
     mov ah, 09h
     int 21h
 
@@ -21,26 +21,26 @@ start:
     mov dl, 07h
     int 21h
 
-    lea dx, offset crlf  ;换行
+    lea dx, crlf  ;换行
     mov ah, 09h
     int 21h
 
     call GetNum ;接受键盘输入
     
     
-    lea dx, offset crlf  ;换行
+    lea dx, crlf  ;换行
     mov ah, 09h
     int 21h
 
 
     call Disp  ;输出年份
 
-    lea dx, offset separate  ;输出月份
+    lea dx, separate  ;输出月份
     mov ah, 09h
     int 21h
     call Dispp
 
-    lea dx, offset separate  ;输出日值
+    lea dx, separate  ;输出日值
     mov ah, 09h
     int 21h
     call Disppp
@@ -79,7 +79,7 @@ Disp proc
     push ax     ;数据入栈，保留数值
     push dx
 
-    lea dx, offset Year  ;输出提示信息
+    lea dx, Year  ;输出提示信息
     mov ah, 09h
     int 21h
 
@@ -93,7 +93,7 @@ Dispp proc
     push ax     ;数据入栈，保留数值
     push dx
 
-    lea dx, offset Month  ;输出提示信息
+    lea dx, Month  ;输出提示信息
     mov ah, 09h
     int 21h
 
@@ -107,7 +107,7 @@ Disppp proc
     push ax     ;数据入栈，保留数值
     push dx
 
-    lea dx, offset Day  ;输出提示信息
+    lea dx, Day  ;输出提示信息
     mov ah, 09h
     int 21h
 
